@@ -17,3 +17,5 @@ function appify() {
    chmod +x "$DIR/$APPNAME"
    echo "$PWD/$APPNAME.app"
 }
+
+alias quit="exit"
