@@ -64,3 +64,5 @@ shopt -s histverify
 # Base16 Shell
 BASE16_SHELL="$HOME/TerminalMods/base16-shell/base16-eighties.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+PATH=$PATH:~/.composer/vendor/bin:$BASH_IT/bin
