@@ -26,4 +26,6 @@ function clip() {
   fi
 }
 
+alias localip="ifconfig | grep -v inet6 | grep inet | grep broadcast | awk '{print \$2}'"
+
 alias quit="exit"
