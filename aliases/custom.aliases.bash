@@ -29,3 +29,13 @@ function clip() {
 alias localip="ifconfig | grep -v inet6 | grep inet | grep broadcast | awk '{print \$2}'"
 
 alias quit="exit"
+
+function dark() {
+  BACKGROUND=dark
+  reload
+}
+
+function light() {
+  BACKGROUND=light
+  reload
+}

@@ -7,7 +7,10 @@ export BASH_IT="$HOME/.bash_it"
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
-export BASH_IT_THEME='powerline-multiline-2'
+
+BASH_THEME=${BASH_THEME-'powerline-multiline-2'}
+
+export BASH_IT_THEME=${BASH_THEME}
 
 # Your place for hosting Git repos. I use this for private repos.
 export GIT_HOSTING='git@github.com'
@@ -32,18 +35,18 @@ export SCM_CHECK=true
 source $BASH_IT/bash_it.sh
 
 if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
-    update_terminal_cwd() {
-        # Identify the directory using a "file:" scheme URL,
-        # including the host name to disambiguate local vs.
-        # remote connections. Percent-escape spaces.
-	local SEARCH=' '
-	local REPLACE='%20'
-	local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
-	printf '\e]7;%s\a' "$PWD_URL"
-    }
-    PROMPT_COMMAND="update_terminal_cwd; $PROMPT_COMMAND"
+  update_terminal_cwd() {
+    # Identify the directory using a "file:" scheme URL,
+    # including the host name to disambiguate local vs.
+    # remote connections. Percent-escape spaces.
+    local SEARCH=' '
+    local REPLACE='%20'
+    local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
+    printf '\e]7;%s\a' "$PWD_URL"
+  }
+  PROMPT_COMMAND="update_terminal_cwd; $PROMPT_COMMAND"
 fi
-								    
+
 source $HOME/.bash_secrets
 export EDITOR=vim
 export HISTINGORE='clear:history'
@@ -61,8 +64,12 @@ export DOCKER_CERT_PATH=/Users/bez/.docker/machine/machines/default
 # Bash hitory ninja training wheel:
 shopt -s histverify
 
+BASE16_FLAVOR=eighties
+BACKGROUND=${BACKGROUND-dark}
+
 # Base16 Shell
-BASE16_SHELL="$HOME/TerminalMods/base16-shell/base16-eighties.dark.sh"
+#BASE16_SHELL="$HOME/TerminalMods/base16-shell/base16-eighties.light.sh"
+BASE16_SHELL="$HOME/TerminalMods/base16-shell/base16-${BASE16_FLAVOR}.${BACKGROUND}.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 PATH=$PATH:~/.composer/vendor/bin:$BASH_IT/bin
